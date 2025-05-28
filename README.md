@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # VoiceAI - AI Voice Calling Agent Platform
 
 A production-ready SaaS platform for AI-powered voice calling agents using SignalWire, OpenAI, and modern web technologies.
@@ -159,3 +160,6 @@ MIT License - see LICENSE file for details
 ## 📞 Support
 
 For support, email support@voiceai.com or join our Slack community.
+=======
+# Final-SaaS
+>>>>>>> b2dba505d10e562bc578755b68644aee5ecd734e
