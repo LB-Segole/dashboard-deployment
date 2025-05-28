@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "noEmit": false,
+    "emitDeclarationOnly": false
+  },
+  "exclude": [
+    "**/node_modules",
+    "**/.*",
+    "**/__tests__",
+    "vite.config.ts",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ],
+  "include": [
+    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "index.html"
+  ]
+}

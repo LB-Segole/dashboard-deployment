@@ -1,0 +1,59 @@
+/* Light theme (default) */
+:root, [data-theme="light"] {
+  --color-primary: 37, 99, 235; /* blue-600 */
+  --color-secondary: 15, 23, 42; /* slate-900 */
+  --color-text: 17, 24, 39; /* gray-900 */
+  --color-text-secondary: 75, 85, 99; /* gray-600 */
+  --color-bg: 255, 255, 255;
+  --color-bg-secondary: 249, 250, 251; /* gray-50 */
+  --color-border: 229, 231, 235; /* gray-200 */
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --color-primary: 59, 130, 246; /* blue-500 */
+  --color-secondary: 30, 41, 59; /* slate-800 */
+  --color-text: 243, 244, 246; /* gray-100 */
+  --color-text-secondary: 209, 213, 219; /* gray-300 */
+  --color-bg: 15, 23, 42; /* slate-900 */
+  --color-bg-secondary: 30, 41, 59; /* slate-800 */
+  --color-border: 55, 65, 81; /* gray-700 */
+}
+
+/* Status colors */
+.status-success {
+  --color-status: 22, 163, 74; /* green-600 */
+}
+
+.status-warning {
+  --color-status: 234, 179, 8; /* yellow-600 */
+}
+
+.status-error {
+  --color-status: 220, 38, 38; /* red-600 */
+}
+
+/* Apply theme variables */
+.theme-primary {
+  color: rgb(var(--color-primary));
+}
+
+.theme-bg {
+  background-color: rgb(var(--color-bg));
+}
+
+.theme-bg-secondary {
+  background-color: rgb(var(--color-bg-secondary));
+}
+
+.theme-text {
+  color: rgb(var(--color-text));
+}
+
+.theme-text-secondary {
+  color: rgb(var(--color-text-secondary));
+}
+
+.theme-border {
+  border-color: rgb(var(--color-border));
+}

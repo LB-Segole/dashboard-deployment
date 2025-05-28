@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AI Voice Calling Agent - Admin Dashboard" />
+    <meta name="author" content="AI Voice Calling Agent" />
+    <title>Admin Dashboard - AI Voice Calling Agent</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Admin Dashboard - AI Voice Calling Agent" />
+    <meta property="og:description" content="Professional admin dashboard for managing AI voice calling agents" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/admin-bg.jpg" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Admin Dashboard - AI Voice Calling Agent" />
+    <meta name="twitter:description" content="Professional admin dashboard for managing AI voice calling agents" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico" />
+    
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8fafc;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      .loading-spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #ffffff20;
+        border-top: 4px solid #ffffff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+<script>
+  // Hide the loading spinner once the app is loaded
+  window.addEventListener('load', () => {
+    const spinner = document.querySelector('.loading-spinner');
+    if (spinner) {
+      spinner.style.display = 'none';
+    }
+  });

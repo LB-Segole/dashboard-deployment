@@ -1,0 +1,23 @@
+# .github/workflows/deploy-cloudrun.yml
+name: Deploy to Cloud Run
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+      - run: gcloud auth configure-docker
+      - run: docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/voice-agent:${{ github.sha }} .
+      - run: docker push gcr.io/${{ secrets.GCP_PROJECT }}/voice-agent:${{ github.sha }}
+      - uses: google-github-actions/deploy-cloudrun@v1
+        with:
+          service: voice-agent
+          image: gcr.io/${{ secrets.GCP_PROJECT }}/voice-agent:${{ github.sha }}
+          region: us-central1

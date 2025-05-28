@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[context.production.environment]
+  NODE_ENV = "production"
+  NEXT_PUBLIC_API_URL = "https://api.voiceai.tech/v1"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+  NEXT_PUBLIC_API_URL = "https://staging-api.voiceai.tech/v1"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+  NEXT_PUBLIC_API_URL = "https://staging-api.voiceai.tech/v1"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

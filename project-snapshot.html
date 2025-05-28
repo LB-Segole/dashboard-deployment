@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoiceAI Project Snapshot</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #181c20; color: #eaeaea; margin: 0; padding: 0; }
+    .container { max-width: 1100px; margin: 2rem auto; background: #23272e; border-radius: 10px; box-shadow: 0 2px 8px #0008; padding: 2rem; }
+    h1, h2, h3 { color: #7dd3fc; }
+    pre { background: #181c20; border-radius: 6px; padding: 1em; overflow-x: auto; }
+    code { font-size: 1em; }
+    .tree { font-family: 'Fira Mono', monospace; font-size: 1em; color: #a3e635; margin-bottom: 2em; }
+    .section { margin-bottom: 2.5em; }
+    .file-title { color: #fbbf24; margin-top: 1.5em; margin-bottom: 0.5em; }
+    .subtle { color: #94a3b8; font-size: 0.95em; }
+    .folder { color: #38bdf8; }
+    .file { color: #fbbf24; }
+    .divider { border: none; border-top: 1px solid #334155; margin: 2em 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>VoiceAI Project Snapshot</h1>
+  <p class="subtle">A static overview of the project structure and key files for client presentation.</p>
+
+  <h2>Project Structure</h2>
+  <pre class="tree">
+/ai-voice-calling-agent
+├── admin-dashboard/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── layouts/
+│   │   └── ...
+│   ├── package.json
+│   ├── README.md
+│   └── ...
+├── client/
+│   ├── src/
+│   ├── package.json
+│   ├── README.md
+│   └── ...
+├── server/
+│   ├── src/
+│   ├── package.json
+│   ├── README.md
+│   └── ...
+├── monitoring/
+├── scripts/
+├── deployment/
+├── docs/
+├── shared/
+├── tests/
+├── docker/
+├── docker-compose.yml
+├── README.md
+└── ...
+  </pre>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>Main README</h2>
+    <pre><code class="language-md"># VoiceAI - AI Voice Calling Agent Platform
+
+A production-ready SaaS platform for AI-powered voice calling agents using SignalWire, OpenAI, and modern web technologies.
+
+## 🚀 Features
+
+- Real-time AI voice conversations
+- Text-to-Speech and Speech-to-Text integration
+- OpenAI-powered conversation intelligence
+- Admin dashboard for call monitoring
+- Scalable architecture with Docker
+- Real-time analytics and reporting
+
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js 14, React 18, TailwindCSS
+- **Backend**: Node.js, Express, TypeScript
+- **Database**: MongoDB
+- **Cache**: Redis
+- **AI Services**: OpenAI GPT-4, SignalWire
+- **Infrastructure**: Docker, Nginx
+
+## 📦 Prerequisites
+
+- Node.js >= 18.0.0
+- Docker and Docker Compose
+- SignalWire Account and API Keys
+- OpenAI API Key
+- MongoDB (local or cloud)
+- Redis (local or cloud)
+
+## 🔧 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/voiceai.git
+cd voiceai
+```
+
+2. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+3. Install dependencies:
+```bash
+# Install root dependencies
+npm install
+
+# Install client dependencies
+cd client && npm install
+cd ..
+
+# Install server dependencies
+cd server && npm install
+cd ..
+
+# Install admin dashboard dependencies
+cd admin-dashboard && npm install
+cd ..
+```
+
+4. Start development servers:
+```bash
+# Start all services with Docker
+npm run docker:up
+
+# Or start services individually:
+npm run dev        # Frontend
+npm run start:api  # Backend
+cd admin-dashboard && npm run dev  # Admin Dashboard
+```
+
+## 🚀 Deployment
+
+1. Build Docker images:
+```bash
+npm run docker:build
+```
+
+2. Start production services:
+```bash
+npm run docker:up
+```
+
+## 📝 Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Server
+NODE_ENV=production
+PORT=3000
+API_URL=http://localhost:4000
+
+# Database
+MONGODB_URI=mongodb://root:example@db:27017/voiceai?authSource=admin
+
+# Redis
+REDIS_URL=redis://redis:6379
+
+# SignalWire
+SIGNALWIRE_PROJECT_ID=your_project_id
+SIGNALWIRE_TOKEN=your_token
+SIGNALWIRE_SPACE=your_space
+
+# OpenAI
+OPENAI_API_KEY=your_openai_key
+
+# JWT
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=7d
+```
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+npm run test:ci
+
+# Run unit tests
+npm run test:unit
+
+# Run E2E tests
+npm run test:e2e
+```
+
+## 📈 Monitoring
+
+The platform includes built-in monitoring with:
+- Error tracking
+- Performance metrics
+- Call quality monitoring
+- System health checks
+
+Access the monitoring dashboard at: `http://localhost:3001/monitoring`
+
+## 🔒 Security
+
+- All API endpoints are authenticated
+- Rate limiting implemented
+- Data encryption in transit and at rest
+- Regular security audits
+- GDPR compliant data handling
+
+## 📄 License
+
+MIT License - see LICENSE file for details
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## 📞 Support
+
+For support, email support@voiceai.com or join our Slack community.
+</code></pre>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>Key Files &amp; Snippets</h2>
+    <h3 class="file-title">docker-compose.yml</h3>
+    <pre><code class="language-yaml">version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    ports:
+      - "3000:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - voiceai-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+  ...
+</code></pre>
+    <h3 class="file-title">package.json (root)</h3>
+    <pre><code class="language-json">{
+  "scripts": {
+    "start": "vite",
+    "start:api": "node server/index.js",
+    ...
+  },
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    ...
+  }
+}
+</code></pre>
+    <h3 class="file-title">admin-dashboard/README.md</h3>
+    <pre><code class="language-md"># Admin Dashboard
+
+This is the admin dashboard for the VoiceAI platform.
+
+## Setup
+
+npm install
+
+## Development
+
+npm run dev
+
+...
+</code></pre>
+    <h3 class="file-title">admin-dashboard/src/App.tsx</h3>
+    <pre><code class="language-tsx">import React, { Suspense } from 'react';
+import { ToastProvider } from '@/components/ui/toaster';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
+import { Spinner } from '@/components/ui/Spinner';
+
+// ...
+
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <ToastProvider>
+        <Router>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              {/* Public routes */}
+              <Route element={<AuthLayout />}>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/unauthorized" element={<UnauthorizedPage />} />
+              </Route>
+              {/* Protected routes */}
+              <Route
+                element={
+                  <ProtectedRoute>
+                    <DashboardLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/users" element={<UsersPage />} />
+                <Route path="/users/:id" element={<UserDetailsPage />} />
+                <Route path="/agents" element={<AgentsPage />} />
+                <Route path="/calls" element={<CallsPage />} />
+                <Route path="/calls/:id" element={<CallDetailsPage />} />
+                <Route path="/analytics" element={<AnalyticsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+              </Route>
+              {/* Catch all route */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </Router>
+      </ToastProvider>
+    </ErrorBoundary>
+  );
+}
+</code></pre>
+    <h3 class="file-title">server/README.md</h3>
+    <pre><code class="language-md"># VoiceAI Server
+
+The server component of the VoiceAI calling agent application.
+
+## Quick Start
+
+npm install
+
+...
+</code></pre>
+    <h3 class="file-title">server/src/server.ts</h3>
+    <pre><code class="language-ts">import { initializeApp } from './app';
+import { logger } from './utils/Logger';
+import { config } from './config';
+import { prisma } from './lib/prisma';
+import { Server } from 'http';
+import { promisify } from 'util';
+import { RedisClient } from './lib/redis';
+import { closeWebSocketConnections } from './websocket/SocketHandler';
+
+class ServerManager {
+  private server: Server | null = null;
+  private shuttingDown = false;
+
+  async start(): Promise<void> {
+    try {
+      // Initialize app and server
+      const { express: app, socketHandler } = initializeApp();
+      this.server = app.listen(config.port);
+      // ...
+    } catch (error) {
+      logger.error('Failed to start server:', error);
+      await this.shutdown(1);
+    }
+  }
+  // ...
+}
+
+// Start the server
+const serverManager = new ServerManager();
+serverManager.start().catch((error) => {
+  logger.error('Failed to initialize server:', error);
+  process.exit(1);
+});
+</code></pre>
+    <h3 class="file-title">client/README.md</h3>
+    <pre><code class="language-md"># VoiceAI Client
+
+This is the client application for the VoiceAI voice calling agent system. It provides a modern, responsive web interface for managing AI-powered voice calls.
+
+## Features
+
+- Real-time voice call management
+- Dashboard with call analytics
+- Call history and recordings
+- Agent configuration
+- WebSocket-based real-time communication
+- Error tracking and monitoring
+- TypeScript support
+- Modern React patterns and hooks
+- Responsive design with Tailwind CSS
+- Authentication and authorization
+- Protected routes
+- Form validation with Zod
+- Testing with Jest and React Testing Library
+
+...
+</code></pre>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>Sample Admin Dashboard Pages</h2>
+    <h3 class="file-title">DashboardPage.tsx</h3>
+    <pre><code class="language-tsx">import React from 'react';
+// ...
+const DashboardPage: React.FC = () => {
+  // ...
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <div className="flex space-x-2">
+          <Button variant="outline" onClick={() => navigate('/settings')}>
+            <Settings className="w-4 h-4 mr-2" />
+            Settings
+          </Button>
+        </div>
+      </div>
+      {/* ...stats, charts, recent calls... */}
+    </div>
+  );
+};
+</code></pre>
+    <h3 class="file-title">UsersPage.tsx</h3>
+    <pre><code class="language-tsx">import React from 'react';
+// ...
+const UsersPage: React.FC = () => {
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">User Management</h1>
+        <Button asChild>
+          <Link to="/users/new" className="flex items-center">
+            <Plus className="w-4 h-4 mr-2" />
+            Add User
+          </Link>
+        </Button>
+      </div>
+      <UserManagement />
+    </div>
+  );
+};
+</code></pre>
+    <h3 class="file-title">AgentsPage.tsx</h3>
+    <pre><code class="language-tsx">import React from 'react';
+// ...
+const AgentsPage: React.FC = () => {
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Agents</h1>
+        <Button asChild>
+          <Link to="/agents/new" className="flex items-center">
+            <Plus className="w-4 h-4 mr-2" />
+            Add Agent
+          </Link>
+        </Button>
+      </div>
+      <AgentsList />
+    </div>
+  );
+};
+</code></pre>
+    <h3 class="file-title">CallsPage.tsx</h3>
+    <pre><code class="language-tsx">import React from 'react';
+// ...
+const CallsPage: React.FC = () => {
+  return (
+    <div className="space-y-4">
+      <h1 className="text-2xl font-bold">Call History</h1>
+      <CallsList />
+    </div>
+  );
+};
+</code></pre>
+    <h3 class="file-title">AnalyticsPage.tsx</h3>
+    <pre><code class="language-tsx">import React from 'react';
+// ...
+const AnalyticsPage: React.FC = () => {
+  return (
+    <div className="space-y-4">
+      <h1 className="text-2xl font-bold">Analytics</h1>
+      <AnalyticsDashboard />
+    </div>
+  );
+};
+</code></pre>
+    <h3 class="file-title">SettingsPage.tsx</h3>
+    <pre><code class="language-tsx">import React from 'react';
+// ...
+const SettingsPage: React.FC = () => {
+  return (
+    <div className="space-y-4">
+      <h1 className="text-2xl font-bold">Settings</h1>
+      <Tabs defaultValue="system" className="w-full">
+        <TabsList>
+          <TabsTrigger value="system">System</TabsTrigger>
+          <TabsTrigger value="user">User</TabsTrigger>
+          <TabsTrigger value="api">API</TabsTrigger>
+        </TabsList>
+        {/* ... */}
+      </Tabs>
+    </div>
+  );
+};
+</code></pre>
+    <h3 class="file-title">NotFoundPage.tsx</h3>
+    <pre><code class="language-tsx">import React from 'react';
+// ...
+const NotFoundPage: React.FC = () => {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-4">
+      <h1 className="text-4xl font-bold">404</h1>
+      <p className="text-xl">Page not found</p>
+      <Button asChild>
+        <Link to="/">Return to Dashboard</Link>
+      </Button>
+    </div>
+  );
+};
+</code></pre>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>More Documentation</h2>
+    <p class="subtle">See the <b>docs/</b> folder in the project for detailed guides on architecture, deployment, APIs, and integrations.</p>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+{
+  "name": "@voiceai/monitoring",
+  "version": "1.0.0",
+  "description": "VoiceAI Monitoring Module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "winston": "^3.11.0",
+    "@google-cloud/logging-winston": "^6.0.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/winston": "^2.4.4",
+    "typescript": "^5.3.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "eslint": "^8.54.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0"
+  }
+} 

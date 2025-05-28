@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: voiceai-web
+    runtime: node
+    region: oregon
+    plan: standard
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1

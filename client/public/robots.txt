@@ -1,0 +1,14 @@
+# VoiceAI Robots Configuration
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://voiceai.example.com/sitemap.xml
+
+# Crawl-delay for API-heavy pages
+Crawl-delay: 10
+
+# Host
+Host: https://voiceai.example.com

@@ -1,0 +1,59 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Install dependencies
+      run: |
+        cd shared && npm ci
+        cd ../server && npm ci
+        cd ../client && npm ci
+        cd ../admin-dashboard && npm ci
+    
+    - name: Run server tests
+      run: |
+        cd server
+        npm test
+    
+    - name: Run client tests
+      run: |
+        cd client
+        npm test
+    
+    - name: Run admin tests
+      run: |
+        cd admin-dashboard
+        npm test
+    
+    - name: Build client
+      run: |
+        cd client
+        npm run build
+    
+    - name: Build admin
+      run: |
+        cd admin-dashboard
+        npm run build
+    
+    - name: Build server
+      run: |
+        cd server
+        npm run build

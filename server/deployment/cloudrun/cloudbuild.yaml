@@ -1,0 +1,59 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/voiceai-server', '.']
+  timeout: 1800s
+
+# Run container security scan
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'container'
+  - 'scan'
+  - 'gcr.io/$PROJECT_ID/voiceai-server'
+  - '--format=json'
+  timeout: 300s
+
+# Push the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/voiceai-server']
+
+# Deploy to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
+  args:
+    - 'run'
+    - 'deploy'
+    - 'voiceai-server'
+    - '--image'
+    - 'gcr.io/$PROJECT_ID/voiceai-server'
+    - '--region'
+    - '${_REGION}'
+    - '--platform'
+    - 'managed'
+    - '--cpu'
+    - '2'
+    - '--memory'
+    - '4Gi'
+    - '--min-instances'
+    - '1'
+    - '--set-env-vars'
+    - 'NODE_ENV=production'
+    - '--vpc-connector'
+    - '${_VPC_CONNECTOR}'
+    - '--service-account'
+    - '${_SERVICE_ACCOUNT}'
+    - '--ingress'
+    - 'internal-and-cloud-load-balancing'
+  timeout: 1200s
+
+substitutions:
+  _REGION: us-central1
+  _VPC_CONNECTOR: vpc-connector
+  _SERVICE_ACCOUNT: voiceai-service@${PROJECT_ID}.iam.gserviceaccount.com
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'N1_HIGHCPU_8'
+
+images:
+- 'gcr.io/$PROJECT_ID/voiceai-server'

@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: voiceai-server
+    runtime: node
+    buildCommand: npm ci --only=production && npm run build
+    startCommand: ./deployment/render/start.sh
+    env: node
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: DEEPGRAM_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+    healthCheckPath: /health
+    healthCheckTimeout: 5
+    autoDeploy: true
+    plan: standard
+    scaling:
+      minInstances: 1
+      maxInstances: 10
+      targetMemoryPercent: 70
+      targetCPUPercent: 70
+    disk:
+      name: tmp
+      mountPath: /tmp
+      sizeGB: 1
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains

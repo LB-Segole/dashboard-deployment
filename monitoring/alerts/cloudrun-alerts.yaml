@@ -1,0 +1,17 @@
+apiVersion: monitoring.googleapis.com/v3
+kind: AlertPolicy
+metadata:
+  displayName: "High Error Rate - VoiceAI API"
+spec:
+  combiner: OR
+  conditions:
+  - conditionThreshold:
+      comparison: COMPARISON_GT
+      duration: 300s
+      filter: 'resource.type="cloud_run_revision" AND metric.type="run.googleapis.com/request_count" AND metric.labels.response_code_class!="2XX"'
+      thresholdValue: 0.05
+      trigger:
+        count: 1
+    displayName: "Error rate > 5% for 5 minutes"
+  notificationChannels:
+  - projects/voiceai-project/notificationChannels/123456789

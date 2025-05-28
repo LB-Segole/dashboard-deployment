@@ -1,0 +1,28 @@
+{
+  "title": "VoiceAI Performance",
+  "panels": [
+    {
+      "title": "Call Volume",
+      "type": "graph",
+      "datasource": "Prometheus",
+      "targets": [{
+        "expr": "sum(rate(voiceai_calls_total[5m])) by (region)",
+        "legendFormat": "{{region}}"
+      }]
+    },
+    {
+      "title": "API Latency",
+      "type": "heatmap",
+      "datasource": "Prometheus",
+      "targets": [{
+        "expr": "histogram_quantile(0.95, sum(rate(voiceai_api_duration_seconds_bucket[5m])) by (le))"
+      }]
+    }
+  ],
+  "templating": {
+    "list": [{
+      "name": "environment",
+      "query": "label_values(voiceai_version, environment)"
+    }]
+  }
+}

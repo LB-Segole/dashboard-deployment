@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "start": "vite",
+    "start:api": "node server/index.js",
+    "build:api": "tsc -p tsconfig.server.json",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "test:ci": "npm run test:unit && npm run test:e2e",
+    "prepare": "husky install",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "@sentry/node": "^9.22.0",
+    "@types/ioredis": "^4.28.10",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/socket.io": "^3.0.1",
+    "ioredis": "^5.6.1",
+    "jsonwebtoken": "^9.0.2",
+    "newrelic": "^12.19.0",
+    "rate-limiter-flexible": "^7.1.1",
+    "socket.io": "^4.8.1",
+    "winston": "^3.17.0",
+    "zod": "^3.25.30"
+  }
+}
