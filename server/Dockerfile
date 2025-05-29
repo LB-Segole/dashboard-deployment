@@ -1,16 +1,19 @@
-FROM node:18-alpine
+FROM node:18-alpine as base
 WORKDIR /app
 COPY package*.json ./
 
-# First install ALL dependencies (including devDependencies)
-RUN npm ci
-
-# Then remove husky and other dev-only packages
-RUN npm uninstall husky
-
-# Now install only production dependencies cleanly
-RUN npm ci --omit=dev
-
+# Development target
+FROM base as development
+RUN npm install
 COPY . .
-EXPOSE 3000
-CMD ["node", "server.js"]
+EXPOSE 4000
+CMD ["npm", "run", "dev"]
+
+# Production target
+FROM base as production
+RUN npm ci
+RUN npm uninstall husky
+RUN npm ci --omit=dev
+COPY . .
+EXPOSE 4000
+CMD ["npm", "start"]

@@ -1,37 +1,29 @@
-# Stage 1: Build
-FROM node:18-alpine AS builder
-
+# Base stage
+FROM node:18-alpine AS base
 WORKDIR /app
-
-# Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
-
-# Copy source code
+# Development stage
+FROM base AS development
+RUN npm install
 COPY . .
+EXPOSE 3000
+CMD ["npm", "run", "dev"]
 
-# Build application
+# Build stage
+FROM base AS builder
+RUN npm ci
+COPY . .
 RUN npm run build
 
-# Stage 2: Production
-FROM node:18-alpine AS runner
-
+# Production stage
+FROM node:18-alpine AS production
 WORKDIR /app
-
-# Copy necessary files from builder
 COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-
-# Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-
-# Expose port
 EXPOSE 3000
-
-# Start the application
 CMD ["node", "server.js"]

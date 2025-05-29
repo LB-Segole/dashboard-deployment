@@ -40,3 +40,5 @@ playwright/.cache/
 
 # Docker
 docker-compose.override.yml
+# Local Netlify folder
+.netlify

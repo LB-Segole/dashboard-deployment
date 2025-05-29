@@ -1,29 +1,23 @@
 import React from 'react';
 
 export interface FormFieldProps {
+  name: string;
   children: React.ReactNode;
-  label?: string;
-  error?: string;
   className?: string;
+  error?: string;
 }
 
-export const FormField: React.FC<FormFieldProps> = ({
-  children,
-  label,
-  error,
-  className = '',
-}) => {
+export function FormField({ name, children, className = '', error }: FormFieldProps) {
   return (
     <div className={`space-y-2 ${className}`}>
-      {label && (
-        <label className="block text-sm font-medium text-gray-700">
-          {label}
-        </label>
-      )}
-      {children}
+      <div className="space-y-1">
+        {children}
+      </div>
       {error && (
-        <p className="text-sm text-red-600">{error}</p>
+        <p className="text-sm text-red-500">
+          {error}
+        </p>
       )}
     </div>
   );
-}; 
+} 

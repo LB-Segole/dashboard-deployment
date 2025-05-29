@@ -27,12 +27,8 @@ export interface SystemSettings {
   security: {
     sessionTimeout: number;
     maxLoginAttempts: number;
-    requireMFA: boolean;
-    passwordPolicy: {
-      minLength: number;
-      requireSpecialChars: boolean;
-      requireNumbers: boolean;
-    }
+    passwordMinLength: number;
+    requireTwoFactor: boolean;
   };
   notifications: {
     emailEnabled: boolean;
@@ -72,6 +68,7 @@ export interface AgentConfig {
 export interface User {
   id: string;
   email: string;
+  name: string;
   firstName: string;
   lastName: string;
   phone: string;
@@ -140,6 +137,7 @@ export interface UserUpdatePayload {
 
 export interface AgentListResponse {
   agents: Agent[];
+  total: number;
 }
 
 export interface DashboardData {

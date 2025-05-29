@@ -1,0 +1,49 @@
+# DNS Records Configuration
+
+## Main Application
+Type: A
+Name: @
+Content: YOUR_SERVER_IP
+Proxy status: Proxied
+TTL: Auto
+
+## API Subdomain
+Type: A
+Name: api
+Content: YOUR_SERVER_IP
+Proxy status: Proxied
+TTL: Auto
+
+## Admin Dashboard Subdomain
+Type: A
+Name: admin
+Content: YOUR_SERVER_IP
+Proxy status: Proxied
+TTL: Auto
+
+## Grafana Subdomain
+Type: A
+Name: grafana
+Content: YOUR_SERVER_IP
+Proxy status: Proxied
+TTL: Auto
+
+# Steps to Configure:
+1. Log in to your Cloudflare account
+2. Select your domain
+3. Go to DNS → Records
+4. Click "Add record" for each of the above configurations
+5. Replace YOUR_SERVER_IP with your actual server IP address
+6. Make sure SSL/TLS is set to "Full (strict)" in Cloudflare settings
+
+# Verification:
+After setting up, verify each domain resolves correctly:
+- Main site: https://yourdomain.com
+- API: https://api.yourdomain.com
+- Admin: https://admin.yourdomain.com
+- Grafana: https://grafana.yourdomain.com
+
+# Important Notes:
+- Allow 24-48 hours for DNS propagation
+- Ensure your firewall allows traffic on ports 80 and 443
+- Test SSL certificate generation after DNS propagation 
