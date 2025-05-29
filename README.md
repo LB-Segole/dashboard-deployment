@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # VoiceAI - Enterprise AI Voice Calling Agent Platform
 
 A production-ready SaaS platform for AI-powered voice calling agents using SignalWire, OpenAI, and modern web technologies.
@@ -243,3 +244,6 @@ Enterprise License - Contact for details
 - Custom integrations
 - Advanced analytics
 - White-label solutions
+=======
+# dashboard-deployment
+>>>>>>> 39d32320d681ba99695afd240d334613e7c3cdce
